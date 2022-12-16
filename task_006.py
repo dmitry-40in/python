@@ -13,3 +13,16 @@ if day == 7 or day == 6:
     print(f'{day} -> да')
 else:
     print(f'{day} -> нет')
+
+
+# a = input()
+# if a.isdigit(): ## если сначала вводить без преобразования, те строкой, а потом проверить с помощью метода isdigit()
+
+## есть вариант исопльзовать try - except
+# while ...:
+#   try:
+#       a = int(input))
+#       ...
+#   except ...:
+#       print()
+#  
