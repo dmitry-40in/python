@@ -35,6 +35,8 @@ if len(result_list) != 0:
     for i in range(1, len(result_list)):
         result += ' + ' + result_list[i]
 
+print(result_list)
+
 file = open('task_033.txt', 'w')
 file.write(result)
 file.close()
