@@ -24,5 +24,5 @@ print()
 print(a.values())
 print(type(a.values()))
 
-b = {a.values()}
-print(b.keys())
+b = a.values()
+print(b)

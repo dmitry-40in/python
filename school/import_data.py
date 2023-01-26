@@ -1,22 +1,16 @@
-def add_student(dict_journal:dict) -> None:
+def add_student(dict_journal:dict, new_subject:dict) -> None:
     """Добавление нового студента (Поля - имя, фамилия)"""
 
-    if dict_journal != {}:
-        for i in dict_journal:
-            for j in 
-
-
-
-
-        print('Добавляем нового студента в систему.')
-        studen_name = input('Введите имя студента: ')
-        student_surname = input('Введите фамилию студента: ')
+    print('Добавляем нового студента в систему.')
+    studen_name = input('Введите имя студента: ')
+    student_surname = input('Введите фамилию студента: ')
+    if new_subject == {}:
         dict_journal[f'{studen_name} {student_surname}'] = {}
     else:
-        print('qwerty')
+        dict_journal[f'{studen_name} {student_surname}'] = new_subject
 
 
-def add_subject(dict_journal:dict) -> None:
+def add_subject(dict_journal:dict, subject_data:dict) -> None:
     """Добавление предмета (добавляется всем ученикам сразу)"""
 
     print('Добавляем новый премет.')
@@ -26,6 +20,8 @@ def add_subject(dict_journal:dict) -> None:
     else:
         for i in dict_journal:
             dict_journal[i][new_subject] = []
+        subject_data[new_subject] = ['new']
+        # return new_subject  #добавленный предмет добавим в словарь предметов, чтобы при добавлении нового ученика присваивать ему все существующие предметы.
 
 
 def get_key_name(dict_journal:dict) -> str:

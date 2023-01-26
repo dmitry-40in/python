@@ -11,7 +11,7 @@ def print_list_name_students(dict_journal:dict) -> None:
         j+= 1
 
 
-def add_score(dict_journal:dict) -> None:
+def print_score(dict_journal:dict) -> None:
     """Показ листа оценок конкретного ученика"""
 
     print('Лист оценок конкретного ученика')
