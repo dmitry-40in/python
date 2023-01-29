@@ -1,45 +1,59 @@
-import import_data
-import export_data
-
+import view
 
 data = {}
-new_subject_data = {}
+students_names = []
+subjects = []
+marks = (2, 3, 4, 5)
 
 
-while True:
-    print('Добавление нового студента - 1\nДобавление предмета - 2\nДобавление оценки - 3\nПоказать список учеников - 4\nВыход - 0')
-    print()
-    choice = input('Ваш выбор: ')
-    if choice == '1':
+def start():
+    while True:
         print()
-        import_data.add_student(data, new_subject_data)
+        print('Выберите операцию:')
         print()
-    if choice == '2':
+        choice = view.operation()
         print()
-        # import_data.add_subject(data)
-        #new_subject_data[import_data.add_subject(data)] = ['new'] # как вариант сделать цикл доавление предмета и словарь предметов тут, а не в функции... может тогда оценка не
-        import_data.add_subject(data, new_subject_data)
-        print() 
-    if choice == '3':
-        print()
-        import_data.add_score(data)
-        print()
-    if choice == '4':
-        print()
-        export_data.print_list_name_students(data)
-        print()
-    if choice == '5':
-        print()
-        export_data.print_score(data)
-        print()
-    if choice == '6':
-        print()
-        print(data)
-        print(new_subject_data)
-        print()       
 
-    if choice == '0':
-        print('Досвидания!\n')
-        quit()
+        if choice == '1':
+            print('Добавляем нового студента.')
+            name = view.add_student()
+            while name in students_names:
+                print('Студент с таким именем уже существует. Придумайте другое имя.')
+                name = view.add_student()
 
-    
+            students_names.append(name)
+            data[name] = {}
+            if subjects:
+                for i in subjects:
+                    data[name][i] = []
+
+        if choice == '2':
+            print('Добавляем новый предмет.')
+            subject = view.add_subject()
+            for i in students_names:
+                data[i][subject] = []
+            subjects.append(subject)
+
+        if choice == '3':
+            name = view.get_key_name(students_names)
+            subject, mark = view.add_mark(subjects, marks)
+            data[name][subject].append(mark)
+
+        if choice == '4':
+            for i, name in enumerate(students_names, start=1):
+                print(f'{i}. {name}')
+
+        if choice == '5':
+            name = view.get_name_to_show(students_names)
+            print(name, ':')
+            for i in data[name]:
+                print(f'    {i}:', *data[name][i])
+
+        if choice == '9':
+            print('data:', data)
+            print('students_name:', students_names)
+            print('subjects:', subjects)
+
+        if choice == '6':
+            print('Досвидания!')
+            quit()
